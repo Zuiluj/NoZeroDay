@@ -1,0 +1,30 @@
+version: '3.5'
+
+services:
+  app:
+    restart: always
+    build: .
+    expose: 
+      - "8020"
+    ports:
+      - 8020:8000
+    volumes: 
+      - ./app:/code/app
+    working_dir: /code/app
+    command: >
+      /root/.cache/pypoetry/virtualenvs/no-zero-days-py3.7/bin/python manage.py runserver 0.0.0.0:8000
+
+  db:
+    image: postgres
+    restart: always
+    environment: 
+      POSTGRES_USER: root
+      POSTGRES_DB: no_zero_days
+      POSTGRES_PASSWORD: thisisasecurepassword
+
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

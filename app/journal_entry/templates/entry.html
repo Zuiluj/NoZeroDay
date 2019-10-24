@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Journal Entries </title>
+
+    {% load widget_tweaks %}
+    {% load static %}
+
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'journal_entry/css/entry_style.css' %}" type="text/css">
+    
+</head>
+<body>
+    <div id="dimmer"> </div>
+
+    <header>
+        <nav>
+            <div class="journal_nav">
+                <span id="journal_title"> {{ journal.name }} </span>
+                <button id="delete_journal"> DELETE JOURNAL </button> 
+            </div>
+
+            <div class="main-nav">
+                <ul>
+                    <li> <a href="/journals/"> <button> JOURNALS </button> </a> </li>
+                    <li> <button id="new_entry" type="submit" name="new_entry"> NEW </button></li>
+                    <li> <button form="entry_data" id="save_entry" type="submit" name="save_entry"> SAVE </button></li>
+                </ul>
+            </div>
+
+            <div id="delete_confirm">
+                <div id="delete_container">
+                    <h3> Delete this journal? </h3>
+                    <button class="delete_btn" id="delete_journal_cnfrm"> Yes, delete it from existence. </button>
+                    <button class="delete_btn" id="delete_cancel"> No, I don't want to! </button>
+                </div>
+            </div>
+
+            <div id="entries">
+                <ul>
+                    {% for entry in entries %}
+                    <li> 
+                        <a href="/journals/{{ journal.name }}/{{ entry.pk }}/" class="entry_select"> {{ entry.title }} <br />
+                        {{ entry.date_created }} <br /> </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <form class="journal_area" id="entry_data" method="post">
+        {% csrf_token %}
+        <div class="entry_title_container">
+            {{ form.title | add_class:"entry_text" | attr:"id:entry_title" }}
+        </div>
+        <div class="entry_area">
+            <section class="entry">
+                <h2> Plan Today </h2>
+                {{ form.plan_today | add_class:"entry_text" | attr:"id:plan_today" }}
+            </section>
+
+            <section class="entry">
+                <h2> What I did today</h2>
+                {{ form.did_today | add_class:"entry_text" | attr:"id:did_today" }}
+            </section>
+
+            <section class="entry">
+                <h2> Plan Tomorrow </h2>
+                {{ form.plan_tom | add_class:"entry_text" | attr:"id:plan_tom" }}
+            </section>
+        </div>
+    </form>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'journal_entry/js/journal_entry_script.js' %}"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+</body>
+</html>

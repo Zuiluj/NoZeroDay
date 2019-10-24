@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Profile </title>
+    
+    {% load widget_tweaks %}
+    {% load staticfiles %}
+
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'user/css/profile.css' %}" type="text/css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul> 
+                <li> <a href="/journals/"> Journals </a> </li>
+                <li> <a class="selected" href="/profile/"> Profile </a> </li>
+                <li> <a href="/logout/"> Logout </a> </li>
+            </ul>
+        </nav>
+    </header>
+
+    <h2 id="page_title"> Edit Profile </h2>
+    <main>
+        <div class="form_wrapper">
+        <form method="POST" id="edit_profile">
+            {% csrf_token %}
+            <h3 class="profile_section"> Profile </h3>
+            <h4> Change name: </h4>
+            <h4> Current: <span style="color: #51a38d"> {{ user.get_name }} </span> </h4>
+            {{ form.name | add_class:"form_input" }}
+            {{ form.name.errors }}
+
+            <h3 class="profile_section"> password </h3>
+            <h4> Current password: </h4>
+            {{ form.current_password | add_class:"form_input" }}
+            {{ form.current_password.errors }}
+            <h4> New password: </h4>
+            {{ form.new_password | add_class:"form_input" }}
+            {{ form.new_password.errors }}
+
+            <input type="submit" name="update" value="Update profile" id="submit_form">
+        </form>
+        </div>
+    </main>
+
+</body>
+</html>

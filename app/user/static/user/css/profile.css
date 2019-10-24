@@ -1,0 +1,105 @@
+html {
+    box-sizing: border-box; 
+    height: 100%;
+    width: 100%;
+}
+
+*, *::before, **::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Bree Serif';
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background: #d2c6a1;
+}
+
+h2#page_title {
+    text-align: center;
+    color: #38240a;
+}
+
+h3.profile_section {
+    text-transform: uppercase;
+}
+
+header {
+    margin: 0;
+    background-color: #38240a;
+    display: flex;
+    width: 100%;
+    padding: 0;
+    justify-content: flex-end;
+}
+
+header nav ul {
+    display: flex;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+header nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 20px 30px;
+}
+
+header nav ul li a:hover {
+    background-color: white;
+    color: #38240a;
+}
+
+header nav ul li a.selected {
+    background-color: white;
+    color: #38240a;
+}
+
+main {
+    width: 80%;
+    margin: 0 auto;
+    background:#ecdfc6;
+    border-radius: 25px;
+}
+
+.form_wrapper {
+    margin: 0 auto;
+    width: 80%;
+    padding: 10% 0;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_input {
+    font-family: inherit;
+    font-size: 19px;
+    padding: 0.8em 0.5em;
+    border-radius: 25px;
+    border: none;
+}
+
+#submit_form {
+    border: none;
+    border-radius: 25px;
+    padding: 1em 0;
+    font-size: 19px;
+    font-family: inherit;
+    width: 50%;
+    margin: 2em auto;
+    background: #3e2910;
+    color:	#ecdfc6;
+    cursor: pointer;
+}
+
+.errorlist {
+    color: red;
+    list-style: none;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Journals </title>
+
+    {% load widget_tweaks %}
+    {% load static %}
+
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'journal_entry/css/journal_style.css' %}" type="text/css">
+</head>
+<body>
+    <div id="dimmer">
+    </div>
+
+    <div id="create_journal_parent">
+        <div id="create_journal_form">
+            <h2> Create new journal </h2>
+            <p id="error"> </p>
+            <form method='POST' id='journal_form'>
+                {% csrf_token %}
+                {{ form.name | add_class:"form_input" | attr:"placeholder=JournalName" }}
+                <input class="form_buttons" type="submit" value="Submit"> 
+                <button type="button" class="form_buttons" id="cancel_button"> Cancel </button>
+            </form>
+        </div>
+    </div>
+
+    <header>
+        <h2> Welcome back <span id="username"> {{ user.name }} </span> </h2>
+        <nav>
+            <ul> 
+                <li> <a class="selected" href="/journals/"> Journals </a> </li>
+                <li> <a href="/profile/"> Profile </a> </li>
+                <li> <a href="/logout/"> Logout </a> </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="journals">
+        {% for journal in journals %} 
+                <div class="journal">
+                    <a href="/journals/{{ journal.name }}/" class="journal-link"> 
+                        {{ journal.name }}
+                    </a> 
+                </div>
+        {% endfor %}
+    </div>
+
+    <button id="create_journal"> Create Journal </button>
+    
+
+
+    <footer>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="{% static 'journal_entry/js/journal_script.js' %}"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+</body>
+</html>

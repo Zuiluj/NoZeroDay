@@ -1,0 +1,215 @@
+html {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Bree Serif';
+    height: 100%;
+    background:	#ecdfc6;
+}
+
+#dimmer {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+header {
+    margin: 0;
+    background-color: #38240a;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+header h2 {
+    margin: 0 1em;
+    color: #e8ebea;
+}
+
+header #username {
+    color: #72e0b8;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    text-transform: uppercase;
+}
+
+header nav ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    padding: 20px 30px;
+}
+
+header nav ul li a:hover {
+    background-color: white;
+    color: black;
+}
+
+header nav ul li a.selected {
+    background-color: white;
+    color: black;
+}
+
+.journals {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100;
+}
+
+.journal {
+    background-color: black;
+    height: auto;
+    width: 33.33%;
+    overflow-x: hidden;
+}
+
+.journal a {
+    background:#7c6847;
+    text-decoration: none;
+    color: white;
+    display: block;
+    padding: 2em;
+    width: 100%;
+    height: 100%;
+    text-transform: uppercase;
+}
+
+.journal a:hover {
+    transform: translateX(15%);
+    transition: 0.5s;
+}
+
+/* create journal button */
+#create_journal {
+    color: white;
+    background:#3e2910;
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    cursor: pointer;
+    padding: 1em 3em;
+    border: none;
+    border-radius: 20px;
+    font-family: inherit;
+}
+
+#create_journal_parent {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ecdfc6;
+    border-radius: 25px;
+    padding: 2em;
+}
+
+#create_journal_parent h2 {
+    color: 	#3e2910;
+    margin: 2em 0;
+}
+
+#create_journal_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#create_journal_form form {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.form_input {
+    padding: .9em 1em;
+    width: 100%;
+    margin: 1em 0;
+    border-radius: 25px;
+    border: none;
+}
+
+.form_buttons {
+    border-radius: 25px;
+    margin: .2em 0;
+    border: none;
+    padding: .5em 1em;
+    font-family: inherit;
+    background-color: #3fc2ff;
+    color: white;
+    cursor: pointer;
+}
+
+#cancel_button {
+    background-color: red;
+    color: white;
+}
+
+#error {
+    color: red;
+}
+
+
+@media screen and (max-width: 600px) {
+    
+    header {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    header nav ul {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+    }
+
+    header nav ul li a {
+        display: flex;
+        width: 100%;
+    }
+
+    .journals {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .journal {
+        background-color: black;
+        width: 100%;
+    }
+
+    .journal a {
+        background:#7c6847;
+        text-decoration: none;
+        color: white;
+        display: block;
+        padding: 2em;
+        width: 100%;
+        height: 100%;
+        text-transform: uppercase;
+    }
+
+}
+
